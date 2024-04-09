@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-from typing import List
+#!/usr/bin/python3
+"""Module with a python script"""
 
 
 def pascal_triangle(n):
