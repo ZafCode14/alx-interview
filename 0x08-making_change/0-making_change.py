@@ -4,19 +4,16 @@
 
 def makeChange(coins, total):
     """Function that determines the fewest number of coins"""
-    if total < 0:
-        return 0
-    if total == 0:
-        return 0
-    if not coins:
+    if not coins or coins is None:
         return -1
-
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-
+    if total <= 0:
+        return 0
+    change = 0
+    coins = sorted(coins)[::-1]
     for coin in coins:
-        for amount in range(coin, total + 1):
-            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
-
-    return dp[total] if dp[total] != float('inf') else -1
-
+        while coin <= total:
+            total -= coin
+            change += 1
+        if (total == 0):
+            return change
+    return -1
